@@ -26,7 +26,18 @@ app.post('/api/users', (req, res) => {
     res.status(201).json({message: 'users added', addUser});
 });
 
+app.put('/api/users/:id', (req, res) => {
+    
+    const userId = parseInt(req.params.id);
+    const user = users.find(user => user.id === userId);
 
+    if (user) {
+        user.name = req.body.name;
+        res.status(201).json({message: 'users updated', user });
+    } else {
+        res.status(404).json({ message: "User not found" });
+    }
+});
 
 app.listen(PORT, ()=>{
     console.log(`server in listning on http://localhost:${PORT}`)
