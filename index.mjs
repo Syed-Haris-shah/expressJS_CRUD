@@ -27,7 +27,7 @@ app.post('/api/users', (req, res) => {
 });
 
 app.put('/api/users/:id', (req, res) => {
-    
+
     const userId = parseInt(req.params.id);
     const user = users.find(user => user.id === userId);
 
@@ -37,6 +37,10 @@ app.put('/api/users/:id', (req, res) => {
     } else {
         res.status(404).json({ message: "User not found" });
     }
+});
+
+app.delete('/api/users/:id', (req, res) => {
+    res.json({ message: `user contain has been deleted`});
 });
 
 app.listen(PORT, ()=>{
