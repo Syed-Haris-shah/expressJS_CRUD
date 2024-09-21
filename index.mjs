@@ -5,9 +5,8 @@ const PORT = 3000
 const app = express()
 app.use(express.json())
 
-app.get('/', (req, res)=>{
-
-    res.json({message: 'hello'})
+app.get('/api/users', (req, res)=>{
+    res.status(200).json({message: `users data fetched`})
 })
 
 
