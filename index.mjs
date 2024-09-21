@@ -15,7 +15,15 @@ app.get('/api/users', (req, res)=>{
 })
 
 app.post('/api/users', (req, res) => {
-    res.status(201).json({message: 'users added'});
+
+    const addUser = {
+
+        id: users.length + 1,
+        name: req.body.name,
+        emai: req.body.email
+    }
+    users.push(addUser)
+    res.status(201).json({message: 'users added', addUser});
 });
 
 
