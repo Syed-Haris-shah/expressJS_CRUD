@@ -14,6 +14,11 @@ app.get('/api/users', (req, res)=>{
     res.status(200).json({message: `users data fetched`, data: users})
 })
 
+app.post('/api/users', (req, res) => {
+    res.status(201).json({message: 'users added'});
+});
+
+
 
 app.listen(PORT, ()=>{
     console.log(`server in listning on http://localhost:${PORT}`)
