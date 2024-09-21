@@ -6,7 +6,7 @@ const app = express()
 app.use(express.json())
 
 let users = [
-    { id: 1, name: 'Hairs', email: 'haris@gmail.com' },
+    { id: 1, name: 'Haris', email: 'haris@gmail.com' },
     { id: 2, name: 'hamza', email: 'hamza@gmail.com' }
 ];
 
@@ -40,7 +40,9 @@ app.put('/api/users/:id', (req, res) => {
 });
 
 app.delete('/api/users/:id', (req, res) => {
-    res.json({ message: `user contain has been deleted`});
+    const userId = parseInt(req.params.id);
+    users = users.filter(user => user.id !== userId);
+    res.json({ message: `user contain id ${userId} has been deleted`});
 });
 
 app.listen(PORT, ()=>{
